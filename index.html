@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yug Shah — Selected Work</title>
+<meta name="description" content="Full stack software engineer. Case studies of production systems and personal projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbfaf7; --surface:#ffffff; --ink:#1b1d22; --muted:#5d636e; --line:#e4e1da;
+  --accent:#1f5f8b; --accent-soft:#e8f0f6; --chip:#f2efe8; --good:#1d7a4f;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121417; --surface:#1a1d21; --ink:#e9eaec; --muted:#a2a8b3; --line:#2c3036;
+    --accent:#7db7e0; --accent-soft:#1d2a35; --chip:#24282e; --good:#6fd3a0;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121417; --surface:#1a1d21; --ink:#e9eaec; --muted:#a2a8b3; --line:#2c3036;
+  --accent:#7db7e0; --accent-soft:#1d2a35; --chip:#24282e; --good:#6fd3a0;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Inter,system-ui,-apple-system,Segoe UI,sans-serif}
+a{color:var(--accent);text-underline-offset:3px}
+.wrap{max-width:860px;margin:0 auto;padding:56px 16px 80px}
+header h1{font-size:clamp(32px,6vw,44px);line-height:1.1;margin:0 0 6px;letter-spacing:-.02em}
+header .role{font-size:18px;color:var(--muted);margin:0 0 18px}
+header p{max-width:680px;margin:0 0 18px}
+.links{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:15px}
+.note{margin-top:28px;padding:14px 16px;border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:8px;background:var(--surface);font-size:14px;color:var(--muted)}
+h2.section{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:56px 0 16px;font-weight:600}
+article{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px;margin:0 0 20px}
+article h3{margin:0 0 4px;font-size:21px;letter-spacing:-.01em}
+.meta{color:var(--muted);font-size:14px;margin:0 0 14px}
+.stack{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px;padding:0;list-style:none}
+.stack li{background:var(--chip);border-radius:999px;padding:2px 10px;font-size:13px}
+h4{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:20px 0 8px;font-weight:600}
+article p{margin:0 0 10px}
+article ul.points{margin:0;padding-left:20px}
+article ul.points li{margin:0 0 6px}
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:8px;margin:4px 0 4px;padding:0;list-style:none;counter-reset:s}
+.flow li{flex:1 1 140px;background:var(--accent-soft);border-radius:10px;padding:10px 12px;font-size:14px;line-height:1.4;position:relative}
+.flow li b{display:block;font-size:13px;color:var(--accent);margin-bottom:2px}
+.flow li b::before{counter-increment:s;content:counter(s) ". "}
+.results{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:6px 0 4px}
+.stat{border:1px solid var(--line);border-radius:10px;padding:12px}
+.stat .n{font-size:24px;font-weight:700;letter-spacing:-.02em;color:var(--good);line-height:1.2}
+.stat .l{font-size:13px;color:var(--muted)}
+footer{margin-top:48px;color:var(--muted);font-size:14px}
+@media (max-width:520px){article{padding:18px}.flow li{flex-basis:100%}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Yug Shah</h1>
+  <p class="role">Full Stack Software Engineer</p>
+  <p>I build and ship web platforms, data pipelines and AI features. Since May 2026 I have been a software engineering intern at a US travel tech company, where my work is used every day by teams in the US and India. Integrated MBA Tech in AI &amp; Machine Learning, graduating 2028.</p>
+  <div class="links">
+    <a href="mailto:shahyug6764@gmail.com">shahyug6764@gmail.com</a>
+    <a href="https://github.com/shahyug721-sudo">GitHub</a>
+    <a href="https://linkedin.com/in/yug-shah06">LinkedIn</a>
+  </div>
+  <div class="note">Work done for my employer is described here at the level of design, decisions and results. Its code, internal tools, data and partner names are confidential and are not shown. I'm happy to walk through any of it in detail in an interview. Code for my personal projects is public.</div>
+</header>
+
+<h2 class="section">Production work</h2>
+
+<article>
+  <h3>Internal team platforms</h3>
+  <p class="meta">Real-time task board and workflow platform · used daily by the US and India teams</p>
+  <ul class="stack"><li>React</li><li>Node.js</li><li>Firebase Auth &amp; Firestore</li><li>Redis</li><li>Vercel serverless</li><li>Security rules</li></ul>
+  <p>The content and engineering teams were tracking work across spreadsheets and separate dashboards that disagreed with each other. I built the task board the content teams now run their work on, and a workflow platform that merges two live engineering dashboards into one.</p>
+  <h4>How a request flows</h4>
+  <ol class="flow">
+    <li><b>Sign in</b>Google sign-in in the browser</li>
+    <li><b>Verify</b>Serverless API checks the ID token on every call</li>
+    <li><b>Authorize</b>Role and board access read from the roster, enforced on the server</li>
+    <li><b>Write</b>Change stored, then recorded in an append-only activity log</li>
+    <li><b>Sync</b>Every open browser updates live; dropped listeners reconnect with backoff</li>
+  </ol>
+  <h4>Decisions and lessons</h4>
+  <ul class="points">
+    <li><strong>Permissions live in the database rules and the API, not the UI.</strong> A review found two screens that computed the user's permission but never applied it, so signed-out visitors saw 217 editable fields. The writes were already refused by the rules, which made it worse: edits appeared, then silently vanished. I threaded the permission through every input and added a cheap regression check: count enabled inputs on each page while signed out.</li>
+    <li><strong>An empty read must never trigger a write.</strong> When the database refused reads, two start-up seeders mistook the empty result for an empty board and re-wrote 491 rows. I removed every write-on-empty-read path, traced the exact batches from document create times, and built a clean-up that deletes a duplicate only when another copy of the same task survives.</li>
+    <li><strong>The log is append-only and written after the change succeeds,</strong> so it never records edits the database rejected.</li>
+  </ul>
+  <h4>Results</h4>
+  <div class="results">
+    <div class="stat"><div class="n">670+</div><div class="l">tasks across 6 boards</div></div>
+    <div class="stat"><div class="n">3 roles</div><div class="l">enforced in security rules</div></div>
+    <div class="stat"><div class="n">86</div><div class="l">end-to-end UI checks on the workflow platform</div></div>
+    <div class="stat"><div class="n">11 apps</div><div class="l">migrated to the company's hosting team, all verified live</div></div>
+  </div>
+</article>
+
+<article>
+  <h3>Image licence audit</h3>
+  <p class="meta">Data pipeline + review dashboard · 31,000+ images across websites, mobile app and travel listings</p>
+  <ul class="stack"><li>Python</li><li>OpenCV</li><li>Supabase (PostgreSQL)</li><li>Next.js</li><li>REST APIs</li></ul>
+  <p>The company needed to know, for every image it publishes, whether it holds a licence for it. Records were spread across several stock photo accounts and design tools, and most published files had been resized and renamed, so names could not be matched.</p>
+  <h4>Pipeline, cheapest check first</h4>
+  <ol class="flow">
+    <li><b>Collect</b>Every image URL from the websites, app content and listing APIs</li>
+    <li><b>Group</b>Perceptual hashes merge copies of the same picture</li>
+    <li><b>Licence history</b>Purchase records pulled from vendor APIs and exports</li>
+    <li><b>Content match</b>ORB features + RANSAC against vendor previews</li>
+    <li><b>Trace</b>Design-tool files traced back to their source photos</li>
+    <li><b>Review</b>Dashboard where a person signs off each open case</li>
+  </ol>
+  <h4>Decisions and lessons</h4>
+  <ul class="points">
+    <li><strong>Match by content, not by name.</strong> Resized and renamed copies still verify, which is what moved the numbers.</li>
+    <li><strong>"Available from a vendor" is not "licensed by us".</strong> An image only counts once its ID is in our own purchase history. An early version accepted vendor listings, and screenshots of downloads being refused proved that wrong.</li>
+    <li><strong>Human sign-offs are stored apart from the automated sync,</strong> so re-running the pipeline can never overwrite a reviewer's decision.</li>
+  </ul>
+  <h4>Results</h4>
+  <div class="results">
+    <div class="stat"><div class="n">770 → 21,292</div><div class="l">verified licences</div></div>
+    <div class="stat"><div class="n">31,288</div><div class="l">images audited</div></div>
+    <div class="stat"><div class="n">1,587</div><div class="l">design files traced to source photos</div></div>
+  </div>
+</article>
+
+<article>
+  <h3>Real-time voice AI avatar</h3>
+  <p class="meta">Voice layer of a live video avatar product</p>
+  <ul class="stack"><li>React</li><li>Express</li><li>Web Audio worklets</li><li>Deepgram</li><li>GPT-4o</li><li>Gemini</li><li>ElevenLabs TTS</li></ul>
+  <p>A video avatar that holds spoken conversations. The most reported bugs were in the voice loop: it talked over people, heard itself, and sometimes went silent.</p>
+  <h4>The voice loop</h4>
+  <ol class="flow">
+    <li><b>Listen</b>Voice activity detection runs in the browser in an audio worklet</li>
+    <li><b>Transcribe</b>Streaming speech-to-text (Deepgram)</li>
+    <li><b>Answer</b>Server calls the LLM chain with a short-reply prompt</li>
+    <li><b>Speak</b>Text-to-speech with lip sync; mic muted while it talks</li>
+    <li><b>Filter</b>Echo of its own voice is discarded before the next turn</li>
+  </ol>
+  <h4>Decisions and lessons</h4>
+  <ul class="points">
+    <li><strong>Silence is the worst failure.</strong> I added a provider fallback chain (OpenAI → Gemini → a scripted spoken line), so quota limits or an outage degrade the answer instead of killing the conversation.</li>
+    <li><strong>Cost is a product metric.</strong> I built an admin dashboard with per-session cost in USD; the same stack was later reused for a second product.</li>
+  </ul>
+</article>
+
+<article>
+  <h3>Tour map automation</h3>
+  <p class="meta">Desktop app for a mapping team · bookings in, finished maps out</p>
+  <ul class="stack"><li>Python</li><li>Playwright</li><li>OpenRouteService</li><li>Spatial indexing</li><li>pytest</li></ul>
+  <p>Each motorcycle tour booking was turned into a Google My Maps route by hand: hotels, rental offices, daily routes and stops. The team already had thousands of hand-made maps, which became the training data.</p>
+  <h4>Pipeline</h4>
+  <ol class="flow">
+    <li><b>Read</b>Hotel voucher PDFs and the itinerary text</li>
+    <li><b>Pin</b>Hotels and offices from the team's own past pins, then geocoders</li>
+    <li><b>Match</b>Candidate routes from a spatial index over 3,803 past maps</li>
+    <li><b>Route</b>Routing engine only where no past route fits</li>
+    <li><b>Self-check</b>Output re-read the way the mobile app reads it; problems listed for review</li>
+  </ol>
+  <h4>Decisions and lessons</h4>
+  <ul class="points">
+    <li><strong>Reuse the team's judgement.</strong> Past routes encode scenic choices that a shortest-path router would never make, so they are tried first.</li>
+    <li><strong>Every fix is general.</strong> No tour-specific rules; each review comment became logic that applies to any map, plus a test.</li>
+    <li><strong>Built for someone else's PC:</strong> self-updating installer, and a one-click error log the user can send when something fails.</li>
+  </ul>
+  <h4>Results</h4>
+  <div class="results">
+    <div class="stat"><div class="n">~90%</div><div class="l">of the manual mapping work automated</div></div>
+    <div class="stat"><div class="n">15 min → secs</div><div class="l">per map build</div></div>
+    <div class="stat"><div class="n">6 / 6</div><div class="l">days of routes reproduced on a held-out tour, stops within 1 m</div></div>
+    <div class="stat"><div class="n">78</div><div class="l">automated tests</div></div>
+  </div>
+</article>
+
+<h2 class="section">Personal projects (code public)</h2>
+
+<article>
+  <h3>Adaptive emergency corridor</h3>
+  <p class="meta"><a href="https://shahyug721-sudo.github.io/adaptive-corridor/">Live demo</a> · <a href="https://github.com/shahyug721-sudo/adaptive-corridor">Code</a></p>
+  <ul class="stack"><li>JavaScript</li><li>Three.js</li><li>Python</li><li>SUMO</li></ul>
+  <p>A traffic simulation, with a 3D view in the browser, of a reserved ambulance lane on the Mumbai–Nagpur expressway. Drivers use an empty lane, so the system opens a moving "green zone" ahead of the ambulance. The zone's length comes from gap-acceptance theory: long enough for a driver to find a gap, no longer.</p>
+  <div class="results">
+    <div class="stat"><div class="n">−15.6%</div><div class="l">ambulance travel time vs today (statistically significant)</div></div>
+    <div class="stat"><div class="n">73 s → 15 s</div><div class="l">delay vs free flow</div></div>
+    <div class="stat"><div class="n">289 m</div><div class="l">road restricted, vs 500 m for a fixed zone with the same result</div></div>
+  </div>
+</article>
+
+<article>
+  <h3>Godown: invoice to inventory</h3>
+  <p class="meta">Restaurant stock app · <a href="https://github.com/shahyug721-sudo/Inventory-Manager-">Code</a></p>
+  <ul class="stack"><li>FastAPI</li><li>MongoDB</li><li>React Native / Expo</li><li>TypeScript</li></ul>
+  <p>Staff photograph a supplier invoice. A vision model reads each line, a matcher maps it to the catalogue and learns each supplier's shorthand from every correction, and stock only changes after a person confirms. Stock is derived from an append-only ledger, so every number can be explained. 71 API tests cover AI rate limits and checks that one restaurant can never see another's data.</p>
+</article>
+
+<footer>Yug Shah · Mumbai, India</footer>
+</div>
+</body>
+</html>
